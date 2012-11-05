@@ -1,44 +1,34 @@
 .. _intro-tutorial:
 
 ===============
-Scrapy Tutorial
+Scrapy 手册
 ===============
 
-In this tutorial, we'll assume that Scrapy is already installed on your system.
-If that's not the case, see :ref:`intro-install`.
+在这个搜侧，我们假定Scrapy已经安装好了，如果没有，先安装
 
-We are going to use `Open directory project (dmoz) <http://www.dmoz.org/>`_ as
-our example domain to scrape.
+我们要使用一个‘开放式项目（domz)’作为我们的抓取的网站样例。
 
-This tutorial will walk you through these tasks:
+这个手册会知道你完成下面的任务：
 
-1. Creating a new Scrapy project
-2. Defining the Items you will extract
-3. Writing a :ref:`spider <topics-spiders>` to crawl a site and extract
-   :ref:`Items <topics-items>`
-4. Writing an :ref:`Item Pipeline <topics-item-pipeline>` to store the
-   extracted Items
+1. 创建一个scrapy项目。
+2. 定义你提取的items。
+3. 写一个爬虫来提取内容。
+4. 写一个管道来存储提取的items。
 
-Scrapy is written in Python_. If you're new to the language you might want to
-start by getting an idea of what the language is like, to get the most out of
-Scrapy.  If you're already familiar with other languages, and want to learn
-Python quickly, we recommend `Dive Into Python`_.  If you're new to programming
-and want to start with Python, take a look at `this list of Python resources
-for non-programmers`_.
+Scrapy使用python写的，如果你是新手，你可能想得到scrapy在这个语言是什么样的，如果你非常熟悉别的语言，想快速学习python，推荐‘Dive Into Python’，如果你是新的编程者，想从python开始，看看下面的对没有编程经验的推荐资源。
 
 .. _Python: http://www.python.org
 .. _this list of Python resources for non-programmers: http://wiki.python.org/moin/BeginnersGuide/NonProgrammers
 .. _Dive Into Python: http://www.diveintopython.org
 
-Creating a project
+创建一个项目
 ==================
 
-Before you start scraping, you will have set up a new Scrapy project. Enter a
-directory where you'd like to store your code and then run::
+在开始抓取之前，你需要创建一个Scrapy项目，进入一个目录，运行下面的命令：
 
    scrapy startproject tutorial
 
-This will create a ``tutorial`` directory with the following contents::
+会创建一个‘tutorial’的目录，包含下列目录内容：
 
    tutorial/
        scrapy.cfg
@@ -51,32 +41,23 @@ This will create a ``tutorial`` directory with the following contents::
                __init__.py 
                ... 
 
-These are basically: 
+大概意思: 
 
-* ``scrapy.cfg``: the project configuration file
-* ``tutorial/``: the project's python module, you'll later import your code from
-  here.
-* ``tutorial/items.py``: the project's items file.
-* ``tutorial/pipelines.py``: the project's pipelines file.
-* ``tutorial/settings.py``: the project's settings file.
-* ``tutorial/spiders/``: a directory where you'll later put your spiders.
+* ``scrapy.cfg``: 项目配置文件
+* ``tutorial/``: 项目的python模块，你要在这里包含你的代码。
+* ``tutorial/items.py``: 项目的items文件。
+* ``tutorial/pipelines.py``: 项目的管道文件
+* ``tutorial/settings.py``: 项目settings file.
+* ``tutorial/spiders/``: 爬虫目录。
 
-Defining our Item
+定义item.
 =================
 
-`Items` are containers that will be loaded with the scraped data; they work
-like simple python dicts but provide additional protecting against populating
-undeclared fields, to prevent typos.
+Items 包含要加载的爬取数据,他们大致是简单的python字典,但是包含一些对填入数据的保护,防止错误.
 
-They are declared by creating an :class:`scrapy.item.Item` class an defining
-its attributes as :class:`scrapy.item.Field` objects, like you will in an ORM
-(don't worry if you're not familiar with ORMs, you will see that this is an
-easy task).
+他们创建一个class'scrapy.item.Item',定义了一个属性'scrapy.item.Field',像ORM(并不熟悉ORMS也没关系,你会看到这是很简单的).
 
-We begin by modeling the item that we will use to hold the sites data obtained
-from dmoz.org, as we want to capture the name, url and description of the
-sites, we define fields for each of these three attributes. To do that, we edit
-items.py, found in the ``tutorial`` directory. Our Item class looks like this::
+我们开始对item进行mobdel,从dmoz.org拿去数据，需要捕获name,url和描述，我们定义这三个属性为三个字段。这样做，我们编辑items.py，房子'tutorial'目录，我们的Items对象就是这样：
 
     from scrapy.item import Item, Field
 
@@ -85,43 +66,28 @@ items.py, found in the ``tutorial`` directory. Our Item class looks like this::
         link = Field()
         desc = Field()
         
-This may seem complicated at first, but defining the item allows you to use other handy
-components of Scrapy that need to know how your item looks like.
+刚开始这可能有点复杂，但是定义了item允许你在使用其他组建处理数据只需知道item就可以了。
 
-Our first Spider
+第一个爬虫
 ================
 
-Spiders are user-written classes used to scrape information from a domain (or group
-of domains). 
+爬虫用于写类，用于从网站上抓如信息。
 
-They define an initial list of URLs to download, how to follow links, and how
-to parse the contents of those pages to extract :ref:`items <topics-items>`.
+定义一个下载URLs的list，如何提取link，和分析页面要提取的内容，看‘topics-items’
 
-To create a Spider, you must subclass :class:`scrapy.spider.BaseSpider`, and
-define the three main, mandatory, attributes:
+创建一个爬虫，你需要继承`scrapy.spider.BaseSpider`，定义三个主要的，强制性，属性：
 
-* :attr:`~scrapy.spider.BaseSpider.name`: identifies the Spider. It must be
-  unique, that is, you can't set the same name for different Spiders.
+* :attr:`~scrapy.spider.BaseSpider.name`: 识别爬虫，必须唯一，在不同的爬虫里面不能设置相同的名字。
 
-* :attr:`~scrapy.spider.BaseSpider.start_urls`: is a list of URLs where the
-  Spider will begin to crawl from.  So, the first pages downloaded will be those
-  listed here. The subsequent URLs will be generated successively from data
-  contained in the start URLs.
+* :attr:`~scrapy.spider.BaseSpider.start_urls`: 爬虫要爬取的urls，所以，要下载的页面会在这里面，后面的urls会相继的产生数据。
 
-* :meth:`~scrapy.spider.BaseSpider.parse` is a method of the spider, which will
-  be called with the downloaded :class:`~scrapy.http.Response` object of each
-  start URL. The response is passed to the method as the first and only
-  argument.
+* :meth:`~scrapy.spider.BaseSpider.parse` ：一个爬虫的方法，下载的时候调用`~scrapy.http.Response` 对象来开始URL，响应数据为一个参数传递给这个方法。
  
-  This method is responsible for parsing the response data and extracting
-  scraped data (as scraped items) and more URLs to follow.
+  这个方法的职责是解析响应的数据，提取要抓取的数据（编程scrpaed item）。
 
-  The :meth:`~scrapy.spider.BaseSpider.parse` method is in charge of processing
-  the response and returning scraped data (as :class:`~scrapy.item.Item`
-  objects) and more URLs to follow (as :class:`~scrapy.http.Request` objects).
+  The :meth:`~scrapy.spider.BaseSpider.parse` 方法负责处理返回的爬取数据。
 
-This is the code for our first Spider; save it in a file named
-``dmoz_spider.py`` under the ``dmoz/spiders`` directory::
+This is the code for our first Spider; save it in a file named这是我们的第一个爬虫的代码；保存为一个文件`dmoz_spider.py`，在`dmoz/spiders`目录下：
 
    from scrapy.spider import BaseSpider
 
@@ -137,15 +103,14 @@ This is the code for our first Spider; save it in a file named
            filename = response.url.split("/")[-2]
            open(filename, 'wb').write(response.body)
 
-Crawling
+爬取
 --------
 
-To put our spider to work, go to the project's top level directory and run::
+让我们的爬虫工作，到项目同级目录，运行：
 
    scrapy crawl dmoz
 
-The ``crawl dmoz`` command runs the spider for the ``dmoz.org`` domain. You
-will get an output similar to this::
+这个民营是抓取'dmoz.org'网站，你会得到下面相似的结果：
 
    2008-08-20 03:51:13-0300 [scrapy] INFO: Started project: dmoz
    2008-08-20 03:51:13-0300 [tutorial] INFO: Enabled extensions: ...
@@ -157,15 +122,11 @@ will get an output similar to this::
    2008-08-20 03:51:14-0300 [dmoz] DEBUG: Crawled <http://www.dmoz.org/Computers/Programming/Languages/Python/Books/> (referer: <None>)
    2008-08-20 03:51:14-0300 [dmoz] INFO: Spider closed (finished)
 
-Pay attention to the lines containing ``[dmoz]``, which corresponds to our
-spider. You can see a log line for each URL defined in ``start_urls``. Because
-these URLs are the starting ones, they have no referrers, which is shown at the
-end of the log line, where it says ``(referer: <None>)``.
+注意包含[dmoz]的行，这个爬虫的信息。你可以看到一样定义'start_urls'.由于这些URLs开始于一个，他们没有引用连接。
 
-But more interesting, as our ``parse`` method instructs, two files have been
-created: *Books* and *Resources*, with the content of both URLs.
+有意思的是，'parse'方法，两个文件被创建，*Books* and *Resources*,包含urls的内容。
 
-What just happened under the hood?
+引擎下发生了什么?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Scrapy creates :class:`scrapy.http.Request` objects for each URL in the
