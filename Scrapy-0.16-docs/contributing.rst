@@ -1,37 +1,27 @@
 .. _topics-contributing:
 
 ======================
-Contributing to Scrapy
+参与 Scrapy
 ======================
 
-There are many ways to contribute to Scrapy. Here are some of them:
+这里有很多方法来参与Scrapy，这里有几个：
 
-* Blog about Scrapy. Tell the world how you're using Scrapy. This will help
-  newcomers with more examples and the Scrapy project to increase its
-  visibility.
+* 写Scrapy相关的blog，告诉世界你怎么用Scrapy，这样可以帮助新人得到更多的例子，Scrapy项目也会增加。
 
-* Report bugs and request features in the `issue tracker`_, trying to follow
-  the guidelines detailed in `Reporting bugs`_ below.
+* 提交bugs和功能需求 到`issue tracker`_, 试着跟随`Reporting bugs`_下面的详细的向导。
 
-* Submit patches for new functionality and/or bug fixes. Please read
-  `Writing patches`_ and `Submitting patches`_ below for details on how to
-  write and submit a patch.
+* 为新的功能或者bug修复提交新的分支。看一下`Writing patches`_ and `Submitting patches`_下面的介绍详细来知道怎么写和提交分支。
 
-* Join the `scrapy-developers`_ mailing list and share your ideas on how to
-  improve Scrapy. We're always open to suggestions.
+* 加入`scrapy-developers`_ 邮箱列表，分享你的主意怎么提高Scrapy。我们总想听听意见。
 
-Reporting bugs
+反馈bugs
 ==============
 
-Well-written bug reports are very helpful, so keep in mind the following
-guidelines when reporting a new bug.
+一个好的bug报告是非常有用的，报告新的bug的时候想想下面的指南：
 
-* check the :ref:`FAQ <faq>` first to see if your issue is addressed in a
-  well-known question
+* 打开`FAQ <faq>`，先看看你的问题是否在已知问题中。
 
-* check the `open issues`_ to see if it has already been reported. If it has,
-  don't dismiss the report but check the ticket history and comments, you may
-  find additional useful information to contribute.
+* 打开`open issues`_看是否已经提交过，如果是，不要删除报告，检查这条的历史记录和评论，你可能会贡献出有一些有用的信息。
 
 * search the `scrapy-users`_ list to see if it has been discussed there, or
   if you're not sure if what you're seeing is a bug. You can also ask in the

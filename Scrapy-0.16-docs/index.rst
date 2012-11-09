@@ -23,7 +23,7 @@ Getting help
 .. _issue tracker: https://github.com/scrapy/scrapy/issues
 
 
-First steps
+第一步
 ===========
 
 .. toctree::
@@ -35,20 +35,20 @@ First steps
    intro/examples
 
 :doc:`intro/overview`
-    Understand what Scrapy is and how it can help you.
+    知道Scarpy能做什么。
 
 :doc:`intro/install`
-    Get Scrapy installed on your computer.
+	安装它。
 
 :doc:`intro/tutorial`
-    Write your first Scrapy project.
+	写下第一个Scrapy 项目
 
 :doc:`intro/examples`
-    Learn more by playing with a pre-made Scrapy project.
+	学习定制一个Scrapy项目。
 
 .. _section-basics:
 
-Basic concepts
+基本概念
 ==============
 
 .. toctree::
@@ -66,10 +66,10 @@ Basic concepts
    topics/link-extractors
 
 :doc:`topics/commands`
-    Learn about the command-line tool used to manage your Scrapy project.
+		知道如何用命令行来管理项目
 
 :doc:`topics/items`
-    Define the data you want to scrape.
+		定义要爬取的Item
 
 :doc:`topics/spiders`
     Write the rules to crawl your websites.

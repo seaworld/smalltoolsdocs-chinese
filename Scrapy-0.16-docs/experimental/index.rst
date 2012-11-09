@@ -1,19 +1,14 @@
 .. _experimental:
 
-Experimental features
+实验性的特性
 =====================
 
-This section documents experimental Scrapy features that may become stable in
-future releases, but whose API is not yet stable. Use them with caution, and
-subscribe to the `mailing lists <http://scrapy.org/community/>`_ to get
-notified of any changes. 
+这里是scrapy将来可能包含的特征，但是API还没稳定，小心使用，订阅邮件‘http://scrapy.org/community/’来获得新的改动。
 
-Since it's not revised so frequently, this section may contain documentation
-which is outdated, incomplete or overlapping with stable documentation (until
-it's properly merged) . Use at your own risk.
+他不是经常修改，这里包含的文档可能是过时的、不完整或者重复的稳定文档（知道被合并），自己小心。
 
-.. warning::
+.. 警告::
 
-   This documentation is a work in progress. Use at your own risk.
+   这个文档是一个正在发展的文档，小心。
 
-*No experimental features at this time*
+*暂时没有实验性的文档*
