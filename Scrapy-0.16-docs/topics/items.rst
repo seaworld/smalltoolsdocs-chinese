@@ -49,16 +49,14 @@ It's important to note that the :class:`Field` objects used to declare the item
 do not stay assigned as class attributes. Instead, they can be accesed through
 the :attr:`Item.fields` attribute. 
 
-And that's all you need to know about declaring items. 
+所有的都需要知道怎么声明。 
 
-Working with Items
+使用Item
 ==================
 
-Here are some examples of common tasks performed with items, using the
-``Product`` item :ref:`declared above  <topics-items-declaring>`. You will
-notice the API is very similar to the `dict API`_.
+这个一个共用任务平台，使用 ``Product`` item :ref:`declared above  <topics-items-declaring>`. 你会发现这个API和dict非常像。
 
-Creating items
+创建 items
 --------------
 
 ::
@@ -67,7 +65,7 @@ Creating items
     >>> print product
     Product(name='Desktop PC', price=1000)
 
-Getting field values
+创建field值
 --------------------
 
 ::
@@ -122,10 +120,10 @@ Setting field values
         ...
     KeyError: 'Product does not support field: lala'
 
-Accesing all populated values
+访问所有的值
 -----------------------------
 
-To access all populated values, just use the typical `dict API`_::
+访问所有的值，使用dict的API_::
 
     >>> product.keys()
     ['price', 'name']
@@ -133,7 +131,7 @@ To access all populated values, just use the typical `dict API`_::
     >>> product.items()
     [('price', 1000), ('name', 'Desktop PC')]
 
-Other common tasks
+其它常见的任务
 ------------------
 
 Copying items::
@@ -157,11 +155,10 @@ Creating items from dicts::
         ...
     KeyError: 'Product does not support field: lala'
 
-Extending Items
+到处items
 ===============
 
-You can extend Items (to add more fields or to change some metadata for some
-fields) by declaring a subclass of your original Item.
+你可以扩展Items（加更多的fields或者修改metadata）来声明一个item的子类。
 
 For example::
 
@@ -169,31 +166,26 @@ For example::
         discount_percent = Field(serializer=str)
         discount_expiration_date = Field()
 
-You can also extend field metadata by using the previous field metadata and
-appending more values, or changing existing values, like this::
+你可以扩展字段metadata，通过使用前一个域metadata和添加更多的values，或者修改存在的value，像这样::
 
     class SpecificProduct(Product):
         name = Field(Product.fields['name'], serializer=my_serializer)
 
-That adds (or replaces) the ``serializer`` metadata key for the ``name`` field,
-keeping all the previously existing metadata values.
+添加（或替换） ``serializer`` metadata key 对 ``name`` field,保存住所有存在的metadata values.
 
 Item objects
 ============
 
 .. class:: Item([arg])
 
-    Return a new Item optionally initialized from the given argument. 
+    返回一个新Item选项通过给定的参数来初始化。 
     
-    Items replicate the standard `dict API`_, including its constructor. The
-    only additional attribute provided by Items is:
+    Items复制着标准的 `dict API`_, 包含它的构造方法。只额外增加的是:
     
     .. attribute:: fields
 
-        A dictionary containing *all declared fields* for this Item, not only
-        those populated. The keys are the field names and the values are the
-        :class:`Field` objects used in the :ref:`Item declaration
-        <topics-items-declaring>`.
+        一个dict包含 *所有声明字段* 不仅仅是这些常用。keys是一个fiels的名字，值就是 :class:`Field` 对象，
+        在 :ref:`Item declaration  <topics-items-declaring>`.
 
 .. _dict API: http://docs.python.org/library/stdtypes.html#dict
 
@@ -202,11 +194,8 @@ Field objects
 
 .. class:: Field([arg])
 
-    The :class:`Field` class is just an alias to the built-in `dict`_ class and
-    doesn't provide any extra functionality or attributes. In other words,
-    :class:`Field` objects are plain-old Python dicts. A separate class is used
-    to support the :ref:`item declaration syntax <topics-items-declaring>`
-    based on class attributes.
+    关于 :class:`Field` 类只是内置dict的别名，不提共任何额外方法和属性。换句话说，
+    :class:`Field` 对象是老的oython dicts，一个独立的类用于支持 :ref:`item 声明语法 <topics-items-declaring>`
 
 .. _dict: http://docs.python.org/library/stdtypes.html#dict
 
