@@ -45,9 +45,7 @@ Item Fields
 你可以定义其他的 :class:`Field` key 在你的项目里，对应你自己的需求。只要的功能 :class:`Field` 对象是提供一个对象来定义所有的字段metadata在同一个地方。
 通常情况下，这些组建的行为取决与每个字段使用的明确keys来配置的行为。你需要参考这些文档来明白metadata keys对每个组建的使用。
 
-It's important to note that the :class:`Field` objects used to declare the item
-do not stay assigned as class attributes. Instead, they can be accesed through
-the :attr:`Item.fields` attribute. 
+要注意的是 :class:`Field` 对象要声明分配属性。取而代之的是，它们访问 :attr:`Item.fields` 属性。 
 
 所有的都需要知道怎么声明。 
 

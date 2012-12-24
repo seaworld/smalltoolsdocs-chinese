@@ -1,62 +1,42 @@
 .. _topics-spiders:
 
 =======
-Spiders
+爬虫
 =======
 
-Spiders are classes which define how a certain site (or group of sites) will be
-scraped, including how to perform the crawl (ie. follow links) and how to
-extract structured data from their pages (ie. scraping items). In other words,
-Spiders are the place where you define the custom behaviour for crawling and
-parsing pages for a particular site (or, in some cases, group of sites).
+爬虫是一个类，定义一个明确网站（或一组网站）会被爬取，包含怎么样进行检索（例如：跟随链接）和
+怎样从页面提取数据结构（例如：爬取items）。换句话说，spider就是定义自定义行为来抓取和解析页面对特定网站（或，在有些情况是一组网站）。
 
-For spiders, the scraping cycle goes through something like this:
+对伊spiders，循环爬取通过下面实现：
 
-1. You start by generating the initial Requests to crawl the first URLs, and
-   specify a callback function to be called with the response downloaded from
-   those requests.
+1. 你开始产生初始化请求来抓取第一个urls，指定一个response函数为回调函数来下载这些请求。
 
-   The first requests to perform are obtained by calling the
-   :meth:`~scrapy.spider.BaseSpider.start_requests` method which (by default)
-   generates :class:`~scrapy.http.Request` for the URLs specified in the
-   :attr:`~scrapy.spider.BaseSpider.start_urls` and the
-   :attr:`~scrapy.spider.BaseSpider.parse` method as callback function for the
-   Requests.
+   第一个requests执行来获得调用   :meth:`~scrapy.spider.BaseSpider.start_requests` 
+   方法产生 :class:`~scrapy.http.Request` 于指定的URLs 在  :attr:`~scrapy.spider.BaseSpider.start_urls` 
+   和  :attr:`~scrapy.spider.BaseSpider.parse` 作为request的回调方法。
 
-2. In the callback function, you parse the response (web page) and return either
-   :class:`~scrapy.item.Item` objects, :class:`~scrapy.http.Request` objects,
-   or an iterable of both. Those Requests will also contain a callback (maybe
-   the same) and will then be downloaded by Scrapy and then their
-   response handled by the specified callback.
+2. 在回调方法，你解析一个响应（或页面）然后返回一个  :class:`~scrapy.item.Item` 对象,
+   :class:`~scrapy.http.Request` 对象,  or 两个的迭代器. 这些请求会包含一个回调（或相同的）会通过Scrapy的特定回调下载它们的响应handled。
 
-3. In callback functions, you parse the page contents, typically using
-   :ref:`topics-selectors` (but you can also use BeautifuSoup, lxml or whatever
-   mechanism you prefer) and generate items with the parsed data.
+3. 在回调方法，你解析页面内容，通常使用:ref:`topics-selectors` （你可以使用BeautifuSoup,lxml或者你喜欢的其它方法）
+   来产生items包含解析数据。
 
-4. Finally, the items returned from the spider will be typically persisted to a
-   database (in some :ref:`Item Pipeline <topics-item-pipeline>`) or written to
-   a file using :ref:`topics-feed-exports`.
+4. 最后，items返回爬虫会通常存储一个数据库（在某些情况下：:ref:`Item Pipeline <topics-item-pipeline>`）或写到一个文件里使用 :ref:`topics-feed-exports`.
 
-Even though this cycle applies (more or less) to any kind of spider, there are
-different kinds of default spiders bundled into Scrapy for different purposes.
-We will talk about those types here.
+尽管循环应用任何种类的spider，不同的默认spiders捆绑入Scrapy有不同的目的。我们在这讲解一些这些类型.
 
 .. _spiderargs:
 
-Spider arguments
+Spider 参数
 ================
 
-Spiders can receive arguments that modify their behaviour. Some common uses for
-spider arguments are to define the start URLs or to restrict the crawl to
-certain sections of the site, but they can be used to configure any
-functionality of the spider.
+Spiders可以接受参数来修改它们的行为。很多常见的spider参数定义起始的URLs来或者限制爬取指定的网站，但是他们可以配置任何spider。
 
-Spider arguments are passed through the :command:`crawl` command using the
-``-a`` option. For example::
+Spider参数传递给 :command:`crawl` 命令行，使用``-a`` 选项，例如::
 
     scrapy crawl myspider -a category=electronics
 
-Spiders receive arguments in their constructors::
+Spiders在它的结构体里接受参数::
 
     class MySpider(BaseSpider):
         name = 'myspider'
@@ -65,20 +45,17 @@ Spiders receive arguments in their constructors::
             self.start_urls = ['http://www.example.com/categories/%s' % category]
             # ...
 
-Spider arguments can also be passed through the :ref:`scrapyd-schedule` API.
+Spider参数可以通过 :ref:`scrapyd-schedule` API传递.
 
 .. _topics-spiders-ref:
 
-Built-in spiders reference
+内置 spiders 文档
 ==========================
 
-Scrapy comes with some useful generic spiders that you can use, to subclass
-your spiders from. Their aim is to provide convenient functionality for a few
-common scraping cases, like following all links on a site based on certain
-rules, crawling from `Sitemaps`_, or parsing a XML/CSV feed.
+Scrapy带有一些有用的spiders可以使用，都是spiders的子类。他们为了提供方便的方法来实现一些常见的爬取类子，
+像跟随链接爬取规则，或解析一个XML/CSV 源
 
-For the examples used in the following spiders, we'll assume you have a project
-with a ``TestItem`` declared in a ``myproject.items`` module::
+例如，使用下面的spiders，我们假定你有意个叫 ``TestItem`` 定义一个 ``myproject.items`` 模块::
 
     from scrapy.item import Item
 
@@ -89,7 +66,7 @@ with a ``TestItem`` declared in a ``myproject.items`` module::
 
 
 .. module:: scrapy.spider
-   :synopsis: Spiders base class, spider manager and spider middleware
+   :synopsis: Spiders基本类，spider manager and spider middleware
 
 BaseSpider
 ----------
