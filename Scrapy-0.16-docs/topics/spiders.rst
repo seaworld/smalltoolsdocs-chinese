@@ -73,49 +73,32 @@ BaseSpider
 
 .. class:: BaseSpider()
 
-   This is the simplest spider, and the one from which every other spider
-   must inherit from (either the ones that come bundled with Scrapy, or the ones
-   that you write yourself). It doesn't provide any special functionality. It just
-   requests the given ``start_urls``/``start_requests``, and calls the spider's
-   method ``parse`` for each of the resulting responses.
+   这时最简单的spider，每一个spider都要继承它（都要绑定Scrapy，或者写自己的）他不提供特定的方法，只有请求
+    ``start_urls``/``start_requests``,调用spider的 ``parse`` 来响应请求。
 
    .. attribute:: name
       
-       A string which defines the name for this spider. The spider name is how
-       the spider is located (and instantiated) by Scrapy, so it must be
-       unique. However, nothing prevents you from instantiating more than one
-       instance of the same spider. This is the most important spider attribute
-       and it's required.
+	   定义spider的名字，名字代表Scrapy的spider如何实现的。所以需要是唯一的。然而，实例化相同的spider。
+	   这是非常重要的属性。
 
-       If the spider scrapes a single domain, a common practice is to name the
-       spider after the domain, or without the `TLD`_. So, for example, a
-       spider that crawls ``mywebsite.com`` would often be called
-       ``mywebsite``.
+	   如果spider抓单个网站，一个常用实践是域名为爬虫的名字，或不带 `TLD`_. 所以，例如，spider爬取
+	   ``mywebsite.com`` 会被叫做 ``mywebsite``.
 
-   .. attribute:: allowed_domains
+   .. attribute:: 要爬取的域名
 
-       An optional list of strings containing domains that this spider is
-       allowed to crawl. Requests for URLs not belonging to the domain names
-       specified in this list won't be followed if
-       :class:`~scrapy.contrib.spidermiddleware.offsite.OffsiteMiddleware` is enabled.
+	   字符串list允许爬取的域名。不在的URLs中指定的将不被抓取，在
+       :class:`~scrapy.contrib.spidermiddleware.offsite.OffsiteMiddleware` 开启的时候。
 
    .. attribute:: start_urls
 
-       A list of URLs where the spider will begin to crawl from, when no
-       particular URLs are specified. So, the first pages downloaded will be those
-       listed here. The subsequent URLs will be generated successively from data
-       contained in the start URLs.
+	   一个启动的URLs的list，当没有指定的URLs。所有，下载的第一列会出现在这里。随后的产生的URLs会从开始的URLs中产生。
 
    .. method:: start_requests()
 
-       This method must return an iterable with the first Requests to crawl for
-       this spider. 
-       
-       This is the method called by Scrapy when the spider is opened for
-       scraping when no particular URLs are specified. If particular URLs are
-       specified, the :meth:`make_requests_from_url` is used instead to create
-       the Requests. This method is also called only once from Scrapy, so it's
-       safe to implement it as a generator.
+       返回第一个爬取的请求的迭代其。
+      
+	   这个方法叫做Scrapy，在spider开始爬取，如果urls指定了。 :meth:`make_requests_from_url` 
+	   用来代替请求。这个方法调用Scrapy，所以它安全。
 
        The default implementation uses :meth:`make_requests_from_url` to
        generate Requests for each url in :attr:`start_urls`.
