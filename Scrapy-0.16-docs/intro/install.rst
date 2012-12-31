@@ -4,7 +4,7 @@
 Installation guide
 ==================
 
-Pre-requisites
+安装前的要求
 ==============
 
 安装前假定你下面都已经安装好了：
@@ -13,67 +13,38 @@ Pre-requisites
 * OpenSSL. This comes preinstalled in all operating systems except Windows (see :ref:`intro-install-platform-notes`)
 * `pip`_ or `easy_install`_ Python package managers
 
-Installing Scrapy
+安装Scrapy
 =================
 
-You can install Scrapy using easy_install or pip (which is the canonical way to
-distribute and install Python packages).
+你可以使用easy_install or pip来安装
 
-.. note:: Check :ref:`intro-install-platform-notes` first.
-
-To install using pip::
+使用pip::
 
    pip install Scrapy
 
-To install using easy_install::
+使用easy_install::
 
    easy_install Scrapy
 
 .. _intro-install-platform-notes:
 
-Platform specific installation notes
+特殊平台安装笔记
 ====================================
 
 Windows
 -------
 
-After installing Python, follow these steps before installing Scrapy:
+安好python后，跟着下面的步骤来安装：
 
-* add the ``C:\python27\Scripts`` and ``C:\python27`` folders to the system
-  path by adding those directories to the ``PATH`` environment variable from
-  the `Control Panel`_.
+* 添加C:\python27\Scripts 到系统的环境变量。
 
-* install OpenSSL by following these steps:
+* 按下面的步骤安装openssh：
 
-  1. go to `Win32 OpenSSL page <http://slproweb.com/products/Win32OpenSSL.html>`_
+* 不想看，直接用windows的 easy_isntall ，方便。
 
-  2. download Visual C++ 2008 redistributables for your Windows and architecture
-
-  3. download OpenSSL for your Windows and architecture (the regular version, not the light one)
-
-  4. add the ``c:\openssl-win32\bin`` (or similar) directory to your ``PATH``, the same way you added ``python27`` in the first step`` in the first step
-
-* some binary packages that Scrapy depends on (like Twisted, lxml and pyOpenSSL) require a compiler available to install, and fail if you don't have Visual Studio installed. You can find Windows installers for those in the following links. Make sure you respect your Python version and Windows architecture.
-
-  * pywin32: http://sourceforge.net/projects/pywin32/files/
-  * Twisted: http://twistedmatrix.com/trac/wiki/Downloads
-  * zope.interface: download the egg from `zope.interface pypi page <http://pypi.python.org/pypi/zope.interface>`_ and install it by running ``easy_install file.egg``
-  * lxml: http://pypi.python.org/pypi/lxml/
-  * pyOpenSSL: https://launchpad.net/pyopenssl
-
-Ubuntu 9.10 or above
+Ubuntu 9.10 or 以前
 ~~~~~~~~~~~~~~~~~~~~
 
-**Don't** use the ``python-scrapy`` package provided by Ubuntu, they are
-typically too old and slow to catch up with latest Scrapy.
+不要用ubuntu提供的 python-scrapy 包，它的版本太旧。
 
-Instead, use the official :ref:`Ubuntu Packages <topics-ubuntu>`, which already
-solve all dependencies for you and are continuously updated with the latest bug
-fixes.
-
-.. _Python: http://www.python.org
-.. _pywin32: http://sourceforge.net/projects/pywin32/
-.. _this Twisted bug: http://twistedmatrix.com/trac/ticket/3707
-.. _pip: http://www.pip-installer.org/en/latest/installing.html
-.. _easy_install: http://pypi.python.org/pypi/setuptools
-.. _Control Panel: http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/sysdm_advancd_environmnt_addchange_variable.mspx
+相对的，使用正式版，解决了所有依赖，不断的更新和修复bug。

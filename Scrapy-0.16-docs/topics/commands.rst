@@ -1,28 +1,23 @@
 .. _topics-commands:
 
 =================
-Command line tool
+命令行工具
 =================
 
 .. versionadded:: 0.10
 
-Scrapy is controlled through the ``scrapy`` command-line tool, to be referred
-here as the "Scrapy tool" to differentiate it from their sub-commands which we
-just call "commands", or "Scrapy commands".
+Scrapy 是通过 ``scrapy``命令行控制的，这里讲一下“Scrapy tool”和子命令行的区别。
 
-The Scrapy tool provides several commands, for multiple purposes, and each one
-accepts a different set of arguments and options.
+Scrapy工具提供几个命令来实现多个功能，每个都使用一组不同的参数和选项。
 
 .. _topics-project-structure:
 
-Default structure of Scrapy projects
+Scrapy 项目的默认结构
 ====================================
 
-Before delving into the command-line tool and its sub-commands, let's first
-understand the directory structure of a Scrapy project.
+在学习它的命令行工具和子命令之前，我们想了解一下它的目录结构。
 
-Even thought it can be modified, all Scrapy projects have the same file
-structure by default, similar to this::
+尽管这些可以被修改，但所有的Scrapy项目都有同样的默认结构：
 
    scrapy.cfg
    myproject/
@@ -36,18 +31,15 @@ structure by default, similar to this::
            spider2.py
            ...
 
-The directory where the ``scrapy.cfg`` file resides is known as the *project
-root directory*. That file contains the name of the python module that defines
-the project settings. Here is an example::
+目录里的 ``scrapy.cfg`` 文件代表着项目目录，文件包含python模块定义的项目设置，下面是例子::
 
     [settings]
     default = myproject.settings
 
-Using the ``scrapy`` tool
+使用 ``scrapy`` 工具
 =========================
 
-You can start by running the Scrapy tool with no arguments and it will print
-some usage help and the available commands::
+你可以开始运行Scrapy工具布带任何参数，这是会输出很多有用的帮助信息：
 
     Scrapy X.Y - no active project
 
@@ -59,9 +51,7 @@ some usage help and the available commands::
       fetch         Fetch a URL using the Scrapy downloader
     [...]
 
-The first line will print the currently active project, if you're inside a
-Scrapy project. In this, it was run from outside a project. If run from inside
-a project it would have printed something like this::
+第一行输出当前使用的项目，如果你在一个Scrapy项目里。如果你不在项目里，如果你运行在项目里，你会的到这样的输出：
 
     Scrapy X.Y - project: myproject
 
@@ -70,30 +60,27 @@ a project it would have printed something like this::
 
     [...]
 
-Creating projects
+创建项目
 -----------------
 
-The first thing you typically do with the ``scrapy`` tool is create your Scrapy
-project::
+第一件事使用scrapy创建你的Scrapy项目：
 
     scrapy startproject myproject
 
-That will create a Scrapy project under the ``myproject`` directory.
+这样会创建一个'myproject'的目录
 
-Next, you go inside the new project directory::
+接下来，进入这个新项目的目录：
 
     cd myproject
 
-And you're ready to use use the ``scrapy`` command to manage and control your
-project from there.
+这是再使用scrapy命令来管理和控制你的项目。
 
-Controlling projects
+控制项目
 --------------------
 
-You use the ``scrapy`` tool from inside your projects to control and manage
-them.
+你可以使用'scrapy'工具来控制和管理项目。
 
-For example, to create a new spider::
+像这样，创建一个新的爬虫：
 
     scrapy genspider mydomain mydomain.com
 
