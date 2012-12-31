@@ -1,23 +1,24 @@
 .. _topics-commands:
 
 =================
-ÃüÁîĞĞ¹¤¾ß
+Command line tool
 =================
 
 .. versionadded:: 0.10
 
-Scrapy ÊÇÍ¨¹ı ``scrapy``ÃüÁîĞĞ¿ØÖÆµÄ£¬ÕâÀï½²Ò»ÏÂ¡°Scrapy tool¡±ºÍ×ÓÃüÁîĞĞµÄÇø±ğ¡£
+Scrapy é€šè¿‡ ``scrapy``çš„å‘½ä»¤è¡Œå·¥å…·æ¥æ§åˆ¶ï¼Œè¿™é‡Œç®€ç§°â€œScrapy toolâ€æ¥åŒºåˆ«å…¶ä»–çš„å­å‘½ä»¤è¡Œï¼Œæˆ‘ä»¬å«"å‘½ä»¤"æˆ–â€œScrapy å‘½ä»¤â€ã€‚
 
-Scrapy¹¤¾ßÌá¹©¼¸¸öÃüÁîÀ´ÊµÏÖ¶à¸ö¹¦ÄÜ£¬Ã¿¸ö¶¼Ê¹ÓÃÒ»×é²»Í¬µÄ²ÎÊıºÍÑ¡Ïî¡£
 
-.. _topics-project-structure:
+Scrapy toolæä¾›å‡ ä¸ªå·¥å…·ï¼Œå¤šç§æ”¯æŒï¼Œæ¯ä¸ªæ¥å—ä¸åŒçš„å‚æ•°ã€‚
 
-Scrapy ÏîÄ¿µÄÄ¬ÈÏ½á¹¹
+.. _topicsé¡¹ç›®ç»“æ„ï¼š
+
+é»˜è®¤çš„Scrapyç»“æ„
 ====================================
 
-ÔÚÑ§Ï°ËüµÄÃüÁîĞĞ¹¤¾ßºÍ×ÓÃüÁîÖ®Ç°£¬ÎÒÃÇÏëÁË½âÒ»ÏÂËüµÄÄ¿Â¼½á¹¹¡£
+åœ¨æ·±å…¥å‘½ä»¤è¡Œå·¥å…·ä¹‹å‰ï¼Œæˆ‘ä»¬å…ˆäº†è§£Scrapyé¡¹ç›®çš„ç›®å½•ç»“æ„ã€‚
 
-¾¡¹ÜÕâĞ©¿ÉÒÔ±»ĞŞ¸Ä£¬µ«ËùÓĞµÄScrapyÏîÄ¿¶¼ÓĞÍ¬ÑùµÄÄ¬ÈÏ½á¹¹£º
+å°½ç®¡å®ƒå¯ä»¥è¢«ä¿®æ”¹ï¼Œæ‰€æœ‰çš„é¡¹ç›®éƒ½æœ‰é»˜è®¤ç›¸åŒæ–‡ä»¶ç»“æ„ï¼Œç›¸ä¼¼çš„::
 
    scrapy.cfg
    myproject/
@@ -31,15 +32,15 @@ Scrapy ÏîÄ¿µÄÄ¬ÈÏ½á¹¹
            spider2.py
            ...
 
-Ä¿Â¼ÀïµÄ ``scrapy.cfg`` ÎÄ¼ş´ú±í×ÅÏîÄ¿Ä¿Â¼£¬ÎÄ¼ş°üº¬pythonÄ£¿é¶¨ÒåµÄÏîÄ¿ÉèÖÃ£¬ÏÂÃæÊÇÀı×Ó::
+è¿™ä¸ªç›®å½• ``scrapy.cfg`` æ–‡ä»¶ç›¸å½“ä¸*é¡¹ç›®çš„rootç›®å½•*ï¼Œæ–‡ä»¶åŒ…å«pythonæ¨¡å—å®šä¹‰é¡¹ç›®è®¾ç½®ã€‚è¿™é‡Œä¸€ä¸ªä¾‹å­::
 
     [settings]
     default = myproject.settings
 
-Ê¹ÓÃ ``scrapy`` ¹¤¾ß
+ä½¿ç”¨ ``scrapy`` å·¥å…·
 =========================
 
-Äã¿ÉÒÔ¿ªÊ¼ÔËĞĞScrapy¹¤¾ß²¼´øÈÎºÎ²ÎÊı£¬ÕâÊÇ»áÊä³öºÜ¶àÓĞÓÃµÄ°ïÖúĞÅÏ¢£º
+ä½ å¯ä»¥ä½¿ç”¨Scrapyå·¥å…·ï¼Œä¸å¸¦ä»»ä½•å‚æ•°ï¼Œå®ƒç­”åº”å¾ˆå¤šçš„å¸®åŠ©ä¿¡æ¯å’Œå¯ç”¨çš„å‘½ä»¤::
 
     Scrapy X.Y - no active project
 
@@ -51,7 +52,7 @@ Scrapy ÏîÄ¿µÄÄ¬ÈÏ½á¹¹
       fetch         Fetch a URL using the Scrapy downloader
     [...]
 
-µÚÒ»ĞĞÊä³öµ±Ç°Ê¹ÓÃµÄÏîÄ¿£¬Èç¹ûÄãÔÚÒ»¸öScrapyÏîÄ¿Àï¡£Èç¹ûÄã²»ÔÚÏîÄ¿Àï£¬Èç¹ûÄãÔËĞĞÔÚÏîÄ¿Àï£¬Äã»áµÄµ½ÕâÑùµÄÊä³ö£º
+ç¬¬ä¸€è¡Œä¼šè¾“å‡ºå½“å‰æœ‰æ•ˆçš„é¡¹ç›®ï¼Œå¦‚æœä½ åœ¨é¡¹ç›®é‡Œã€‚è¿™é‡Œæ˜¯è¿è¡Œåœ¨é¡¹ç›®å¤–ã€‚å¦‚æœè¿è¡Œåœ¨ä¸€ä¸ªé¡¹ç›®é‡Œï¼Œå®ƒä¼šè¾“å‡ºæ›´å¤šï¼Œåƒ::
 
     Scrapy X.Y - project: myproject
 
@@ -60,61 +61,49 @@ Scrapy ÏîÄ¿µÄÄ¬ÈÏ½á¹¹
 
     [...]
 
-´´½¨ÏîÄ¿
+åˆ›å»ºé¡¹ç›®
 -----------------
 
-µÚÒ»¼şÊÂÊ¹ÓÃscrapy´´½¨ÄãµÄScrapyÏîÄ¿£º
+ç¬¬ä¸€ä»¶äº‹å°±æ˜¯è¾“å…¥ ``scrapy`` toolæ¥åˆ›å»ºä½ çš„Scrapyé¡¹ç›®::
 
     scrapy startproject myproject
 
-ÕâÑù»á´´½¨Ò»¸ö'myproject'µÄÄ¿Â¼
+è¿™ä¼šåˆ›å»ºä¸€ä¸ª Scrapy é¡¹ç›®åœ¨ ``myproject`` ç›®å½•é‡Œã€‚
 
-½ÓÏÂÀ´£¬½øÈëÕâ¸öĞÂÏîÄ¿µÄÄ¿Â¼£º
+æ¥ä¸‹é‡Œï¼Œè¿›å…¥è¿™ä¸ªé¡¹ç›®ç›®å½•::
 
     cd myproject
 
-ÕâÊÇÔÙÊ¹ÓÃscrapyÃüÁîÀ´¹ÜÀíºÍ¿ØÖÆÄãµÄÏîÄ¿¡£
+è¿™æ—¶ï¼Œä½ å¯ä¸€ç”¨ä½  ``scrapy`` å‘½ä»¤æ¥ç®¡ä½ çš„é¡¹ç›®ã€‚
 
-¿ØÖÆÏîÄ¿
+æ§åˆ¶é¡¹ç›®
 --------------------
 
-Äã¿ÉÒÔÊ¹ÓÃ'scrapy'¹¤¾ßÀ´¿ØÖÆºÍ¹ÜÀíÏîÄ¿¡£
+ä½ åœ¨é¡¹ç›®é‡Œä½¿ç”¨ ``scrapy`` å·¥å…·æ¥æ§åˆ¶å’Œç®¡ç†ä»–ä»¬ã€‚
 
-ÏñÕâÑù£¬´´½¨Ò»¸öĞÂµÄÅÀ³æ£º
+ä¸¾ä¸ªä¾‹å­ï¼Œåˆ›å»ºä¸€ä¸ªçˆ¬è™«::
 
     scrapy genspider mydomain mydomain.com
 
-Some Scrapy commands (like :command:`crawl`) must be run from inside a Scrapy
-project. See the :ref:`commands reference <topics-commands-ref>` below for more
-information on which commands must be run from inside projects, and which not.
+å¾ˆå¤šScrapyçš„å‘½ä»¤(like :command:`crawl`) éƒ½å¿…é¡»åœ¨é¡¹ç›®é‡Œã€‚çœ‹ :ref:`commands reference <topics-commands-ref>` ä¸‹é¢æœ‰è·Ÿå¤šä¿¡æ¯å…³äºå‘½ä»¤è¡Œè¿è¡Œåœ¨é¡¹ç›®é‡Œã€‚
 
-Also keep in mind that some commands may have slightly different behaviours
-when running them from inside projects. For example, the fetch command will use
-spider-overridden behaviours (such as the ``user_agent`` attribute to override
-the user-agent) if the url being fetched is associated with some specific
-spider. This is intentional, as the ``fetch`` command is meant to be used to
-check how spiders are downloading pages.
+åŒæ ·ä½ æ³¨æ„è¿™äº›å‘½ä»¤æœ‰ä¸€äº›ä¸åŒå“¦åŠŸèƒ½ï¼Œå½“è¿è¡Œåœ¨é¡¹ç›®æºé‡Œã€‚æ¯ä¸ªå‘½ä»¤ä¼šä½¿ç”¨çˆ¬è™«çš„è¡Œä¸º(åƒ ``user_agent`` å±æ€§æ¥è¦†ç›– user-agent)
+å¦‚æœä½ è·å–ç›¸å…³çš„ç‰¹å®šspiderã€‚è¿™æ˜¯æ­£å¸¸çš„ï¼Œä½œä¸º ``fetch`` å‘½ä»¤æ„å‘³ç€ä½¿ç”¨é€‰æ‹©å¦‚ä½•çˆ¬å–å’Œä¸‹è½½é¡µé¢ã€‚
 
 .. _topics-commands-ref:
 
-Available tool commands
+æœ‰æ•ˆçš„å‘½ä»¤
 =======================
 
-This section contains a list of the available built-in commands with a
-description and some usage examples. Remember you can always get more info
-about each command by running::
+æœ¬èŠ‚åŒ…å«ä¸€äº›æœ‰æ•ˆçš„å†…ç½®å‘½ä»¤æ¥æ¼”ç¤ºå’Œæœ‰æ•ˆä¾‹å­ã€‚è®°ä½ä½ å¯ä»¥é€šè¿‡å‘½ä»¤æ¥è·å¾—æ›´å¤šå¸®åŠ©::
 
     scrapy <command> -h
 
-And you can see all available commands with::
+ä½ å¯ä»¥çœ‹åˆ°æœ‰æ•ˆå‘½ä»¤::
 
     scrapy -h
 
-There are two kinds of commands, those that only work from inside a Scrapy
-project (Project-specific commands) and those that also work without an active
-Scrapy project (Global commands), though they may behave slightly different
-when running from inside a project (as they would use the project overriden
-settings).
+æœ‰ä¸¤ç§å‘½ä»¤ï¼Œè¿™äº›éƒ½åœ¨Scrapyé¡¹ç›®é‡Œ(åˆ¶å®šé¡¹ç›®å‘½ä»¤) è¿™äº›é€šè¿‡äº›è®¸ä¸åŒï¼Œåœ¨ä¸€ä¸ªé¡¹ç›®é‡Œ (ä½¿ç”¨é¡¹ç›®è®¾ç½®).
 
 Global commands:
 
@@ -145,8 +134,7 @@ startproject
 * Syntax: ``scrapy startproject <project_name>``
 * Requires project: *no*
 
-Creates a new Scrapy project named ``project_name``, under the ``project_name``
-directory.
+åˆ›å»ºä¸€ä¸ªScrapyé¡¹ç›® ``project_name``, under the ``project_name``ç›®å½•.
 
 Usage example::
 
@@ -160,12 +148,9 @@ genspider
 * Syntax: ``scrapy genspider [-t template] <name> <domain>``
 * Requires project: *yes*
 
-Create a new spider in the current project.
+åœ¨å½“å‰é¡¹ç›®é‡Œåˆ›å»ºä¸€ä¸ªSpider.
 
-This is just a convenient shortcut command for creating spiders based on
-pre-defined templates, but certainly not the only way to create spiders. You
-can just create the spider source code files yourself, instead of using this
-command.
+è¿™æ—¶ä¸€ä¸ªæ–¹ä¾¿çš„å¿«æ·å‘½ä»¤æ¥åˆ›å»ºspidersåŸºäºäº‹å…ˆå®šä¹‰å¥½çš„æ¨¡æ¿ï¼Œä½†æ˜¯æ˜æ˜¾çš„ä¸åªæœ‰ä¸€æ¡è·¯æ¥åˆ›å»ºçˆ¬è™«ã€‚ä½ å¯ä»¥æ‰‹åŠ¨åˆ›å»ºçˆ¬è™«æºç æ–‡ä»¶æ¥ä»£æ›¿å‘½ä»¤ã€‚
 
 Usage example::
 
@@ -190,7 +175,7 @@ Usage example::
             pass
 
     $ scrapy genspider -t basic example example.com
-    Created spider 'example' using template 'basic' in module:
+    åˆ›å»ºä¸€ä¸ªçˆ¬è™« 'example' ä½¿ç”¨æ¨¡æ¿ 'basic' :
       mybot.spiders.example
 
 .. command:: crawl
@@ -201,7 +186,7 @@ crawl
 * Syntax: ``scrapy crawl <spider>``
 * Requires project: *yes*
 
-Start crawling a spider. 
+å¼€å§‹ä¸€ä¸ªçˆ¬è™«ï¼š
 
 Usage examples::
 
@@ -244,15 +229,14 @@ server
 * Syntax: ``scrapy server``
 * Requires project: *yes*
 
-Start Scrapyd server for this project, which can be referred from the JSON API
-with the project name ``default``. For more info see: :ref:`topics-scrapyd`.
+å¼€å§‹Scrapyd æœåŠ¡ï¼Œ è¿™é‡Œå»ºæˆJSON APIã€‚æ›´å¤šä¿¡æ¯: :ref:`topics-scrapyd`.
 
 Usage example::
 
     $ scrapy server
     [ ... scrapyd starts and stays idle waiting for spiders to get scheduled ... ]
 
-To schedule spiders, use the Scrapyd JSON API.
+ä½¿ç”¨å®šæ—¶çˆ¬è™«ï¼Œä½¿ç”¨Scrapy JSON APIã€‚
 
 .. command:: list
 
@@ -262,8 +246,7 @@ list
 * Syntax: ``scrapy list``
 * Requires project: *yes*
 
-List all available spiders in the current project. The output is one spider per
-line.
+åˆ—å‡ºå½“å‰é¡¹ç›®çš„æœ‰æ•ˆçˆ¬è™«ã€‚è¾“å‡ºæ¯ä¸ªçˆ¬è™«å“¦åŠŸèƒ½ã€‚
 
 Usage example::
 
@@ -279,12 +262,9 @@ edit
 * Syntax: ``scrapy edit <spider>``
 * Requires project: *yes*
 
-Edit the given spider using the editor defined in the :setting:`EDITOR`
-setting.
+ç¼–è¾‘çˆ¬è™«ä½¿ç”¨editorï¼Œå®šä¹‰åœ¨:setting:`EDITOR` setting.
 
-This command is provided only as a convenient shortcut for the most common
-case, the developer is of course free to choose any tool or IDE to write and
-debug his spiders.
+è¿™ä¸ªå‘½ä»¤æä¾›æ–¹ä¾¿çš„ç¼©å†™ï¼Œå¼€å‘è€…å®¹æ˜“çš„é€‰æ‹©ä»»ä½•å·¥å…·æˆ–IDEæ¥è¾“å…¥å’Œè°ƒè¯•ä½ çš„spidersã€‚
 
 Usage example::
 
