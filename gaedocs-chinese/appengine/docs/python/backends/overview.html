@@ -1113,29 +1113,21 @@ _gaq.push(
       </div>
 
       <div class="g-unit" id="gc-pagecontent">
-        <h1 class="page_title">Backends Python API Overview</h1>
+        <h1 class="page_title">后端 Python API 简介</h1>
 
 
 
 
 
 
-<p>App Engine Backends are instances of your application that are exempt from request deadlines and have access to more memory (up to 1GB) and CPU (up to 4.8GHz) than normal instances. They are designed for applications that need faster performance, large amounts of addressable memory, and continuous or long-running background processes. Backends come in several sizes and configurations, and are billed for uptime rather than CPU usage.</p>
-
-<p>A backend may be configured as either <em>resident</em> or <em>dynamic</em>. Resident backends run continuously, allowing you to rely on the state of their memory over time and perform complex initialization. Dynamic backends come into existence when they receive a request, and are turned down when idle; they are ideal for work that is intermittent or driven by user activity. For more information about the differences between resident and dynamic backends, see <a href="../config/backends.html#Types_of_Backends">Types of Backends</a> and also the discussion of <a href="#Startup">Startup</a> and <a href="#Shutdown">Shutdown</a>.</p>
-
-<p>Backends do not automatically scale in response to request volume.
-Instead, you specify the number of instances of each backend, and
-change this number by performing an <code>update</code> or <code>configure</code> <a href="#Commands">command</a>. The number of instances
-is usually set in proportion to the size of a dataset or the degree of
-processing power you want to bring to bear on a problem. Cost may
-also be a consideration.</p>
-
-<p>Backends are <a
-href="../config/backends.html">configured</a> using <code>backends.yaml</code>. You can list each backend and specify its properties, such as the number of instances, the memory and CPU class, whether it is <a href="#Public_and_Private_Backends">public or private</a>, and other options. Backends share the handlers defined in <code>app.yaml</code> with the main application version. You can place your backends in a separate application root directory if you want to avoid sharing code or handlers, or simply mark the relevant handlers with <code>login: admin</code>.</p>
+<p>appengine 后端是你的应用实例，免除访问过期时间和有更高的内存（到1GB），cpu（到4.8Ghz）。它被设计来用于应用更高的性能，更大的寻址内存，和连续的长时间运行的后端进程。后端进入的几个尺寸和配置，是展示cpu使用情况。</p>
+<p>一个后端需要配置成 <em>resident</em>（驻留） or <em>dynamic</em>（动态）。驻留的后端运行连续，允许依赖内存状态，执行复杂的初始化。动态后端在接到一个请求后开始存在，在空闲的时候关闭，它们理想的工作是间歇的或依赖用户行为的。更多关于它们不同的看： <a href="../config/backends.html#Types_of_Backends">Types of Backends</a> and also the discussion of <a href="#Startup">Startup</a> and <a href="#Shutdown">Shutdown</a>.</p>
+<p>后端不会自动根据请求量来启动，你要指定每个后端有几个实例，修改启动数量来 <code>update</code> or <code>configure</code> <a href="#Commands">command</a>.。实例数量通常在设置大小比例的set，或者你解决一个问题的进程的等级，成本都要考虑。</p>
+<p>后端通过 <code>backends.yaml</code>来<a
+href="../config/backends.html">configured</a>。你可以展示每个后端和指定的属性。像实例的数量，内存和cpu类，或是<a href="#Public_and_Private_Backends">public or private</a>,等等。后端将控制权给予 <code>app.yaml</code>的主应用。你可以想避免共享代码和控制，替换后端在的应用root目录，或者简单的边角handlers有关的 <code>login: admin</code>.</p>
 
 <ul>
-  <li><a href="#Properties_of_Backends">Properties of Backends</a></li>
+  <li><a href="#Properties_of_Backends">后端的属性</a></li>
   <li><a href="#Commands">Commands</a></li>
   <li><a href="#Backend_States">Backend States</a></li>
     <ul>
@@ -1153,8 +1145,8 @@ href="../config/backends.html">configured</a> using <code>backends.yaml</code>. 
 </ul>
 
 
-<h2 id="Properties_of_Backends">Properties of Backends</h2>
-<p>The following table compares backend instances to default App Engine instances.</p>
+<h2 id="Properties_of_Backends">后端的属性</h2>
+<p>下面的表格比较后端实例和默认的appengine实例。</p>
 
 <table>
   <tr>
@@ -1163,9 +1155,9 @@ href="../config/backends.html">configured</a> using <code>backends.yaml</code>. 
     <th width="45%"><p>Backend Instances</p></th>
   </tr>
   <tr>
-    <th>Deadlines</th>
+    <th>超时</th>
     <td>30-second deadline for HTTP requests, 10-minute deadline for tasks</td>
-    <td>Requests to backends can run indefinitely. A backend can choose to handle <code>/_ah/start</code> and execute a program or script for many hours without returning an HTTP response code.</td>
+    <td>几乎无限，后端可以选择处理<code>/_ah/start</code> and执行一个进程或脚本几个小时，不返回HTTP响应。</td>
   </tr>
   <tr>
     <th>CPU</th>
@@ -1217,9 +1209,10 @@ href="../config/backends.html">configured</a> using <code>backends.yaml</code>. 
 </table>
 
 
-<h2 id="Commands">Commands</h2>
+<h2 id="Commands">命令</h2>
 
 <p>App Engine provides the following command-line tools allowing you to interact with the Backends configured in <code>backends.yaml</code></code>.</p>
+<p>appengine提供了下面的命令行攻击来交互，在</p>
 
 <dl class="apireference">
   <dt><code>appcfg backends &lt;dir&gt; update [backend]</code></dt>

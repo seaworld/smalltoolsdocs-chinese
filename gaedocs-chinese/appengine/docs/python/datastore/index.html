@@ -1116,28 +1116,24 @@ _gaq.push(
         <h1 class="page_title">Storing Data</h1>
 
 
-<p>The App Engine environment provides a range of options for storing your data:</p>
+<p>The App Engine 环境提供一系列的选项来存储你的数据：</p>
 <ul>
-  <li><b>App Engine Datastore</b> provides a NoSQL schemaless object datastore, with a query engine and atomic transactions.</li>
-  <li><b><a href="http://developers.google.com/cloud-sql/">Google Cloud SQL</a></b> provides a relational SQL database for your App Engine application, based on the familiar MySQL database.</li>
-  <li><b><a href="../googlestorage/index.html">Google Cloud Storage</a></b> provides a storage service for objects and files up to terabytes in size.</li>
+  <li><b>App Engine Datastore</b>提供一个nosql模式的对象存储，有查询引擎和原子操作。</li>
+  <li><b><a href="http://developers.google.com/cloud-sql/">Google Cloud SQL</a></b> 提供依赖 SQL database for your App Engine application,和mysql数据库很像。</li>
+  <li><b><a href="../googlestorage/index.html">Google Cloud Storage</a></b> 提供对象和文件的存储。</li>
 </ul>
 
-<p>This section details the API for accessing the App Engine Datastore from
-Python. For details of the other storage options, see the documentation for <a
+<p>这一节详细介绍访问AE的数据存储，更多关于存储信息看 <a
 href="https://developers.google.com/cloud-sql/">Cloud SQL</a> and <a
 href="../googlestorage/index.html">Storage</a>.</p>
+<h2>数据存储的Python API </h2>
 
-<h2>The Datastore Python API</h2>
-
-<p>The App Engine datastore is a schemaless object datastore, with a query engine and atomic transactions. The Python interface includes a rich data modeling API and a SQL-like query language called GQL.</p>
-
-<p>The <a href="hr/index.html">High Replication datastore</a> provides an even more reliable storage solution with no planned downtime, higher availability of reads and writes, eventual consistency for all queries except ancestor queries, and strong consistency for reads and ancestor queries.</p>
-
-<p>This reference describes the Python API for the App Engine datastore. It has the following sections:</p>
+<p>AE的数据存储和对象存储结构一样，有一个查询引擎和原子操作。python接口包含丰富的数据存储API和像SQL的查询语言，叫做GQL。</p>
+<p><a href="hr/index.html">High Replication datastore</a>提供了可靠的存储，解决了突然当前的情况，高可用的读写，一致性的查询除了 ancestor queries，强一直性的读和 ancestor queries。</p>
+<p>Python的AE数据存储描述的手册包含下面几个章节：</p>
 
 <ul class="doublespace">
-      <li><a href="overview.html">Datastore Overview</a></li>
+  <li><a href="overview.html">Datastore Overview</a></li>
       <li><a href="entities.html">Entities</a></li>
       <li><a href="queries.html">Queries</a></li>
       <li><a href="transactions.html">Transactions</a></li>
