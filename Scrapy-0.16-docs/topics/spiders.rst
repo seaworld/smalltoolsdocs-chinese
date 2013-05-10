@@ -204,58 +204,37 @@ CrawlSpider
 
 .. class:: CrawlSpider
 
-   This is the most commonly used spider for crawling regular websites, as it
-   provides a convenient mechanism for following links by defining a set of rules.
-   It may not be the best suited for your particular web sites or project, but
-   it's generic enough for several cases, so you can start from it and override it
-   as needed for more custom functionality, or just implement your own spider.
+   这个是抓取有规律的网站最常用的办法，它提供方便的结构来匹配一组规则。对于你的项目，
+   它可能不是最好的，但是它在大多数的情况下足够用了，所以你可以使用它自定义的方法来
+   覆写，或者直接重写你自己的spider来使用。
 
-   Apart from the attributes inherited from BaseSpider (that you must
-   specify), this class supports a new attribute: 
+   一部分属性继承与BaseSpider，这个类提供了一个新的属性：
 
-   .. attribute:: rules
-
-       Which is a list of one (or more) :class:`Rule` objects.  Each :class:`Rule`
-       defines a certain behaviour for crawling the site. Rules objects are
-       described below. If multiple rules match the same link, the first one
-       will be used, according to the order they're defined in this attribute.
+   .. 属性:: rules
+   
+	   是一个或者多个Rule对象，每个Rule对象定义一个确定的行为来抓取网站，Ruls对象在下面有描述，
+	   如果多个rules匹配了同一个link，就使用属性中第一个匹配的。
 
        
-Crawling rules
+Crawling 规则
 ~~~~~~~~~~~~~~
 
 .. class:: Rule(link_extractor, callback=None, cb_kwargs=None, follow=None, process_links=None, process_request=None)
 
-   ``link_extractor`` is a :ref:`Link Extractor <topics-link-extractors>` object which
-   defines how links will be extracted from each crawled page.
+   ``link_extractor`` 是一个链接抽取器，定义页面中哪种link会被抽取。
       
-   ``callback`` is a callable or a string (in which case a method from the spider
-   object with that name will be used) to be called for each link extracted with
-   the specified link_extractor. This callback receives a response as its first
-   argument and must return a list containing :class:`~scrapy.item.Item` and/or
-   :class:`~scrapy.http.Request` objects (or any subclass of them).
+   ``callback`` 回调方法或者一个string（需要是一个spider的方法名字）来被每个链接抽取器来调用。
+   这个回调接受一个response作为它的第一个参数，返回包含Item的list或者一个Request的对象（或它们的子类）。
 
-   .. warning:: When writing crawl spider rules, avoid using ``parse`` as
-       callback, since the :class:`CrawlSpider` uses the ``parse`` method
-       itself to implement its logic. So if you override the ``parse`` method,
-       the crawl spider will no longer work.
+   .. warning:: 当写spider的规则是，避免使用 parse 作为回调，所以如果覆写crawl爬虫的 parse 方法，那么它就不会工作了。
 
-   ``cb_kwargs`` is a dict containing the keyword arguments to be passed to the
-   callback function
+   ``cb_kwargs`` 一个dict ， 包含要传递给回调方法的关键字 。
 
-   ``follow`` is a boolean which specifies if links should be followed from each
-   response extracted with this rule. If ``callback`` is None ``follow`` defaults
-   to ``True``, otherwise it default to ``False``.
+   ``follow`` 是布尔型，链接需要郡守每个相应规则，如果callback是空，follow默认的True，否则为False。
 
-   ``process_links`` is a callable, or a string (in which case a method from the
-   spider object with that name will be used) which will be called for each list
-   of links extracted from each response using the specified ``link_extractor``.
-   This is mainly used for filtering purposes. 
+   ``process_links`` 可调用的方法或者字符串，主要目的用来过滤链接。
 
-   ``process_request`` is a callable, or a string (in which case a method from
-   the spider object with that name will be used) which will be called with
-   every request extracted by this rule, and must return a request or None (to
-   filter out the request).
+   ``process_request`` 可调用，在request提取规则的时候调用，需要返回一个request或者None（没匹配上）
 
 CrawlSpider example
 ~~~~~~~~~~~~~~~~~~~
@@ -292,10 +271,8 @@ Let's now take a look at an example CrawlSpider with rules::
             return item
 
 
-This spider would start crawling example.com's home page, collecting category
-links, and item links, parsing the latter with the ``parse_item`` method. For
-each item response, some data will be extracted from the HTML using XPath, and
-a :class:`~scrapy.item.Item` will be filled with it.
+这个爬虫会开始example的主页，手机类型链接和item链接，使用 parse_item 方法解析，对每个response,很多数据会通过XPath抽取
+然后填入Item。
 
 XMLFeedSpider
 -------------

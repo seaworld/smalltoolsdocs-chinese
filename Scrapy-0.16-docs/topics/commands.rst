@@ -202,7 +202,7 @@ check
 * Syntax: ``scrapy check [-l] <spider>``
 * Requires project: *yes*
 
-Run contract checks.
+进行检查。
 
 Usage examples::
 
@@ -278,19 +278,15 @@ fetch
 * Syntax: ``scrapy fetch <url>``
 * Requires project: *no*
 
-Downloads the given URL using the Scrapy downloader and writes the contents to
-standard output.
+下载指定URL，使用Scrapy的下载器，写入标准输出，不需要创建项目。
 
-The interesting thing about this command is that it fetches the page how the
-the spider would download it. For example, if the spider has an ``USER_AGENT``
-attribute which overrides the User Agent, it will use that one.
+有意思的是这个命令让spider自动下载。例如，如果spider有一个 ``USER_AGENT`` 的属性来替换原来的User Agent ，它会用这个新的。
 
-So this command can be used to "see" how your spider would fetch certain page.
+这个命令可以用来“看”你的spider抓下的确实页面。
 
-If used outside a project, no particular per-spider behaviour would be applied
-and it will just use the default Scrapy downloder settings.
+如果你在项目外使用，没有确定的spider行为被指定，它会用默认的scrapy下载设置。
 
-Usage examples::
+例子::
 
     $ scrapy fetch --nolog http://www.example.com/some/page.html
     [ ... html content here ... ]
@@ -314,9 +310,7 @@ view
 * Syntax: ``scrapy view <url>``
 * Requires project: *no*
 
-Opens the given URL in a browser, as your Scrapy spider would "see" it.
-Sometimes spiders see pages differently from regular users, so this can be used
-to check what the spider "sees" and confirm it's what you expect.
+在浏览器中打开指定的URL，你的scrapy会“看”到它。很多时候，spiders和用户看到的页面不一样，所以这个可以看到spider看的是否是你预期的。
 
 Usage example::
 
@@ -331,10 +325,9 @@ shell
 * Syntax: ``scrapy shell [url]``
 * Requires project: *no*
 
-Starts the Scrapy shell for the given URL (if given) or empty if not URL is
-given. See :ref:`topics-shell` for more info.
+开始Scrapy shell 为URL调试。See :ref:`topics-shell` for more info.
 
-Usage example::
+例子::
 
     $ scrapy shell http://www.example.com/some/page.html
     [ ... scrapy shell starts ... ]
@@ -347,28 +340,23 @@ parse
 * Syntax: ``scrapy parse <url> [options]``
 * Requires project: *yes*
 
-Fetches the given URL and parses with the spider that handles it, using the
-method passed with the ``--callback`` option, or ``parse`` if not given.
+抓取指定URL，解析它，使用``--callback``或者``parse`` 选项处理。
 
 Supported options:
 
-* ``--callback`` or ``-c``: spider method to use as callback for parsing the
-  response
+* ``--callback`` or ``-c``: spider 方法使用回调来解析响应
 
-* ``--rules`` or ``-r``: use :class:`~scrapy.contrib.spiders.CrawlSpider`
-  rules to discover the callback (ie. spider method) to use for parsing the
-  response
+* ``--rules`` or ``-r``: 使用 :class:`~scrapy.contrib.spiders.CrawlSpider` 规则来代替回调来解析响应
 
-* ``--noitems``: don't show extracted links
+* ``--noitems``: 不展示提取链接
 
-* ``--nolinks``: don't show scraped items
+* ``--nolinks``: 不展示scraped对象
 
-* ``--depth`` or ``-d``: depth level for which the requests should be followed
-  recursively (default: 1)
+* ``--depth`` or ``-d``: 请求递归的深度 (default: 1)
 
-* ``--verbose`` or ``-v``: display information for each depth level
+* ``--verbose`` or ``-v``: 展示深度的信息。
 
-Usage example::
+例子::
 
     $ scrapy parse http://www.example.com/ -c parse_item
     [ ... scrapy log lines crawling example.com spider ... ]
@@ -391,12 +379,11 @@ settings
 * Syntax: ``scrapy settings [options]``
 * Requires project: *no*
 
-Get the value of a Scrapy setting.
+获取Scrapy的设置
 
-If used inside a project it'll show the project setting value, otherwise it'll
-show the default Scrapy value for that setting.
+如果在项目里，会展示项目的设置值，否则，它会展示默认的Scrapy值
 
-Example usage::
+距离::
 
     $ scrapy settings --get BOT_NAME
     scrapybot
@@ -411,10 +398,9 @@ runspider
 * Syntax: ``scrapy runspider <spider_file.py>``
 * Requires project: *no*
 
-Run a spider self-contained in a Python file, without having to create a
-project.
+运营一个python文件爬虫，不需要创建项目
 
-Example usage::
+例子::
 
     $ scrapy runspider myspider.py
     [ ... spider starts crawling ... ]
@@ -427,8 +413,7 @@ version
 * Syntax: ``scrapy version [-v]``
 * Requires project: *no*
 
-Prints the Scrapy version. If used with ``-v`` it also prints Python, Twisted
-and Platform info, which is useful for bug reports.
+打印scrapy的版本，还会打印python，twisted的版本信息，在碰到bug的时候很有用。
 
 .. command:: deploy
 
@@ -440,14 +425,12 @@ deploy
 * Syntax: ``scrapy deploy [ <target:project> | -l <target> | -L ]``
 * Requires project: *yes*
 
-Deploy the project into a Scrapyd server. See :ref:`topics-deploying`.
+部署项目到Scrapy服务器 See :ref:`topics-deploying`.
 
-Custom project commands
+自定义项目命令
 =======================
 
-You can also add your custom project commands by using the
-:setting:`COMMANDS_MODULE` setting. See the Scrapy commands in
-`scrapy/commands`_ for examples on how to implement your commands.
+你可以添加自定义的命令，使用:setting:`COMMANDS_MODULE` setting. 看`scrapy/commands`_ 有更多例子告诉你如歌实现你的命令。
 
 .. _scrapy/commands: https://github.com/scrapy/scrapy/blob/master/scrapy/commands
 .. setting:: COMMANDS_MODULE
@@ -457,8 +440,7 @@ COMMANDS_MODULE
 
 Default: ``''`` (empty string)
 
-A module to use for looking custom Scrapy commands. This is used to add custom
-commands for your Scrapy project.
+这个模块用来定制scrapy命令，用来添加自定义的命令
 
 Example::
 

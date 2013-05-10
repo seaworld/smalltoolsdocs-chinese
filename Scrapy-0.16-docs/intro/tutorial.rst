@@ -168,7 +168,7 @@ Selectors选择器介绍
 * :meth:`~scrapy.selector.XPathSelector.re`: 返回一个unicode字符串
 
 
-在shell里使用选择器
+在shell里试验选择器
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 举例使用内置的选择器，需要在系统安装IPython（一个扩展的python终端）
